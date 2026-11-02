@@ -40,7 +40,12 @@
     -webkit-mask-image: radial-gradient(ellipse 50% 62% at 50% 50%, #000 62%, transparent 100%);
             mask-image: radial-gradient(ellipse 50% 62% at 50% 50%, #000 62%, transparent 100%); }
 
-  .topbar { position: relative; z-index: 5; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; padding-top: 26px; }
+  .topbar { position: fixed; top: 14px; left: 0; right: 0; z-index: 50; margin: 0 auto; width: min(1184px, calc(100% - 24px));
+    display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; padding: 9px 10px 9px 24px; border-radius: 999px;
+    border: 1px solid transparent; transition: background .3s, border-color .3s, box-shadow .3s, backdrop-filter .3s; }
+  .topbar.scrolled { background: rgba(22, 11, 6, .62); border-color: var(--glass-line); box-shadow: 0 12px 40px -12px rgba(0,0,0,.7);
+    backdrop-filter: blur(16px) saturate(140%); -webkit-backdrop-filter: blur(16px) saturate(140%); }
+  section { scroll-margin-top: 80px; }
   .topbar nav { display: flex; gap: 26px; font-size: 14px; color: var(--muted); }
   .topbar nav a:hover { color: var(--text); }
   .mark { width: 46px; height: 46px; border-radius: 50%; display: grid; place-items: center; border: 1px solid rgba(255,255,255,.5); font: 600 15px "Inter Tight", sans-serif; letter-spacing: .04em; }
@@ -49,7 +54,7 @@
   .icon:hover { background: rgba(255,255,255,.1); }
   .icon svg { width: 16px; height: 16px; fill: currentColor; }
 
-  .hero-grid { position: relative; z-index: 4; display: grid; grid-template-columns: 1fr 300px; gap: 32px; padding-top: clamp(28px, 6vh, 80px); padding-bottom: 56px; min-height: calc(clamp(720px, 100vh, 1000px) - 72px); }
+  .hero-grid { position: relative; z-index: 4; display: grid; grid-template-columns: 1fr 300px; gap: 32px; padding-top: calc(78px + clamp(28px, 6vh, 80px)); padding-bottom: 56px; min-height: calc(clamp(720px, 100vh, 1000px) - 72px); }
   .kicker { display: flex; align-items: center; gap: 14px; font-size: 14px; color: var(--muted); margin-bottom: 22px; }
   .kicker::before { content: ""; width: 36px; height: 1px; background: var(--muted); }
   .hero h1 { font-size: clamp(48px, 7vw, 100px); max-width: 9.5em; text-shadow: 0 2px 24px rgba(0,0,0,.45), 0 0 2px rgba(0,0,0,.3); }
@@ -131,10 +136,21 @@
   .timeline h3 { font-size: 22px; letter-spacing: -.02em; line-height: 1.2; }
   .timeline p { margin: 6px 0 0; color: var(--muted); font-size: 15px; }
 
-  .contact { text-align: center; padding: 120px 0; background: radial-gradient(ellipse 50% 70% at 50% 100%, rgba(255,106,19,.28), transparent 70%); }
+  .contact { text-align: center; padding: 140px 0; }
   .contact h2 { margin: 0 auto; }
   .contact .ctas { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; margin-top: 34px; }
   footer { padding: 26px 0; border-top: 1px solid var(--glass-line); color: var(--dim); font-size: 13px; text-align: center; }
+
+
+  /* fundos de vidro canelado nas seções: imagem + véu escuro + fade nas bordas */
+  .bg { position: relative; isolation: isolate; }
+  .bg::before { content: ""; position: absolute; inset: 0; z-index: -1; background-size: cover; background-position: center;
+    background-image: linear-gradient(var(--bg), transparent 14%, transparent 86%, var(--bg)), linear-gradient(rgba(11,6,4,var(--veil)), rgba(11,6,4,var(--veil))), var(--img); }
+  .bg-cases { --img: url(images/bg/fundo-3.webp); --veil: .30; }
+  .bg-como { --img: url(images/bg/fundo-2.webp); --veil: .20; }
+  .bg-stack { --img: url(images/bg/fundo-5.webp); --veil: .66; }
+  .bg-traj { --img: url(images/bg/fundo-1.webp); --veil: .15; }
+  .bg-contato { --img: url(images/bg/fundo-4.webp); --veil: .40; }
 
   /* ===== RESPONSIVO ===== */
   @media (max-width: 1000px) {
@@ -148,7 +164,7 @@
     .stack { grid-template-columns: 1fr 1fr; }
   }
   @media (max-width: 720px) {
-    .topbar { grid-template-columns: auto 1fr; }
+    .topbar { grid-template-columns: auto 1fr; padding-left: 10px; }
     .topbar nav { display: none; }
     .mark { order: -1; }
     .hero-photo { height: auto; width: 150%; max-width: none; bottom: auto; top: 40px; opacity: .55; }
@@ -222,7 +238,7 @@
   </div>
 </header>
 
-<section id="cases">
+<section id="cases" class="bg bg-cases">
   <div class="wrap">
     <div class="eyebrow">Cases</div>
     <h2>Problema real, solução no ar, resultado medido.</h2>
@@ -323,7 +339,7 @@
   </div>
 </section>
 
-<section id="como">
+<section id="como" class="bg bg-como">
   <div class="wrap">
     <div class="eyebrow">Como trabalho com IA</div>
     <h2>A IA acelera. As decisões são minhas.</h2>
@@ -351,7 +367,7 @@
   </div>
 </section>
 
-<section id="stack">
+<section id="stack" class="bg bg-stack">
   <div class="wrap">
     <div class="eyebrow">Stack</div>
     <h2>Ferramentas do dia a dia.</h2>
@@ -364,7 +380,7 @@
   </div>
 </section>
 
-<section id="trajetoria">
+<section id="trajetoria" class="bg bg-traj">
   <div class="wrap">
     <div class="eyebrow">Trajetória</div>
     <h2>Da sala de aula aos dados e à IA.</h2>
@@ -378,7 +394,7 @@
   </div>
 </section>
 
-<section id="contato" class="contact">
+<section id="contato" class="contact bg bg-contato">
   <div class="wrap">
     <div class="eyebrow" style="justify-content:center">Contato</div>
     <h2>Vamos construir algo?</h2>
@@ -389,6 +405,14 @@
     </div>
   </div>
 </section>
+
+<script>
+  // barra de navegação flutuante: ganha fundo de vidro ao rolar a página
+  const bar = document.querySelector('.topbar');
+  const onScroll = () => bar.classList.toggle('scrolled', window.scrollY > 24);
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+</script>
 
 <footer>Phellipe Fialho · Belém – PA · Página construída com IA (Claude Code)</footer>
 
