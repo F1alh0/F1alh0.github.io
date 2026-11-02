@@ -118,6 +118,10 @@
   .bar { height: 32px; border-radius: 999px; background: rgba(255,255,255,.12); }
   .bar.after { background: linear-gradient(90deg, #b33a00, var(--orange), var(--orange-2)); box-shadow: 0 8px 30px -8px rgba(255,106,19,.8); }
   .bar-note { font-size: 12.5px; color: var(--dim); }
+  .channels { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .channel { border: 1px solid rgba(255,106,19,.35); background: rgba(255,106,19,.08); border-radius: 12px; padding: 10px 12px; }
+  .channel b { display: block; font: 600 15px "Inter Tight", Inter, sans-serif; color: var(--text); }
+  .channel span { font-size: 12px; color: var(--muted); }
   .cols { width: 100%; max-width: 440px; height: auto; display: block; margin: 0 auto; font-family: Inter, sans-serif; overflow: visible; }
 
   .split { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
@@ -276,6 +280,34 @@
       <article class="glass case reverse">
         <div>
           <div class="ctx">Grupo RBA · Diário do Pará · 2026</div>
+          <h3>Bots de Telegram que publicam sozinhos por editoria</h3>
+          <dl>
+            <dt>Problema</dt>
+            <dd>O site dependia demais de redes sociais e buscadores. Faltavam canais próprios, onde o leitor recebe direto as notícias do assunto que acompanha.</dd>
+            <dt>O que construí</dt>
+            <dd>Um robô que verifica as matérias novas do site a cada 5 minutos, identifica a editoria de cada uma e publica título e link no canal certo do Telegram. Cada link leva um UTM próprio para medir o tráfego de cada canal no GA4, e a automação do Instagram convida o leitor para esses canais.</dd>
+            <dt>Resultado</dt>
+            <dd><span class="result">4 canais segmentados · zero trabalho manual</span></dd>
+          </dl>
+          <div class="chips"><span class="chip">Python</span><span class="chip">WordPress API</span><span class="chip">Telegram Bot API</span><span class="chip">Cloud Run Jobs</span><span class="chip">Cloud Scheduler</span></div>
+        </div>
+        <div class="visual" aria-label="Fluxo de distribuição por editoria">
+          <div class="flow-step"><i>↻</i>Nova matéria no site (verificação a cada 5 min)</div>
+          <div class="flow-arrow">↓</div>
+          <div class="flow-step"><i>⚙</i>Identifica a editoria da matéria</div>
+          <div class="flow-arrow">↓ publica no canal certo</div>
+          <div class="channels">
+            <div class="channel"><b>Plantão</b><span>polícia, Belém, Pará</span></div>
+            <div class="channel"><b>Concursos</b><span>concursos e empregos</span></div>
+            <div class="channel"><b>Loterias</b><span>resultados</span></div>
+            <div class="channel"><b>Eleições 2026</b><span>cobertura eleitoral</span></div>
+          </div>
+        </div>
+      </article>
+
+      <article class="glass case">
+        <div>
+          <div class="ctx">Grupo RBA · Diário do Pará · 2026</div>
           <h3>Do dado à decisão: o formato certo no Facebook</h3>
           <dl>
             <dt>Problema</dt>
@@ -322,7 +354,7 @@
         </div>
       </article>
 
-      <article class="glass case">
+      <article class="glass case reverse">
         <div>
           <div class="ctx">Freelance · 2026</div>
           <h3>Home Imobiliária: site e painel administrativo</h3>
@@ -342,7 +374,7 @@
         </div>
       </article>
 
-      <article class="glass case reverse">
+      <article class="glass case">
         <div>
           <div class="ctx">Grupo RBA · Diário do Pará e DOL · 2026</div>
           <h3>Dashboards e relatórios que se atualizam sozinhos</h3>
