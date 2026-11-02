@@ -35,6 +35,8 @@
   .hero { position: relative; min-height: clamp(720px, 100vh, 1000px); overflow: hidden;
     background:
       radial-gradient(ellipse 55% 70% at 50% 42%, #7a2604 0%, #4a1503 38%, #1c0a03 70%, var(--bg) 100%); }
+  .hero::before { content: ""; position: absolute; inset: 0; z-index: 2; pointer-events: none;
+    background: linear-gradient(90deg, rgba(11,6,4,.78) 0%, rgba(11,6,4,.6) 30%, rgba(11,6,4,.28) 52%, rgba(11,6,4,0) 70%); }
   .hero::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 120px; background: linear-gradient(transparent, var(--bg)); z-index: 2; pointer-events: none; }
   .hero-photo { position: absolute; left: 50%; bottom: 0; transform: translateX(-50%); height: min(94%, 900px); width: auto; z-index: 1;
     -webkit-mask-image: radial-gradient(ellipse 50% 62% at 50% 50%, #000 62%, transparent 100%);
@@ -202,7 +204,7 @@
     <div>
       <div class="kicker">AI Builder · Belém – PA</div>
       <h1>Construo com IA<br>o que <em>roda em produção.</em></h1>
-      <p class="intro">Sou Phellipe Fialho, Analista Web no Grupo RBA (Diário do Pará). Uso IA como alavanca para tirar ideias do papel: automações, dashboards e produtos digitais, entregues de ponta a ponta e medidos pelo impacto no negócio.</p>
+      <p class="intro">Sou Phellipe Fialho, Analista Web no Grupo RBA (Diário do Pará e DOL). Uso IA como alavanca para tirar ideias do papel: automações, dashboards e produtos digitais, entregues de ponta a ponta e medidos pelo impacto no negócio.</p>
       <div class="ctas">
         <a class="btn primary" href="#cases">Ver cases</a>
         <a class="btn ghost" href="curriculo-phellipe-fialho.pdf" download>Baixar currículo ›</a>
@@ -315,7 +317,7 @@
 
       <article class="glass case reverse">
         <div>
-          <div class="ctx">Grupo RBA · 2026</div>
+          <div class="ctx">Grupo RBA · Diário do Pará e DOL · 2026</div>
           <h3>Dashboards e relatórios que se atualizam sozinhos</h3>
           <dl>
             <dt>Problema</dt>
