@@ -159,6 +159,35 @@
   .bg-traj { --img: url(images/bg/fundo-1.webp); --veil: .15; }
   .bg-contato { --img: url(images/bg/fundo-4.webp); --veil: .40; }
 
+
+  /* método, prova e agentes (seção Como trabalho) */
+  .method { list-style: none; margin: 0 0 22px; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+  .step { padding: 24px; display: flex; flex-direction: column; gap: 10px; }
+  .step-n { font: 600 14px "Inter Tight", sans-serif; color: var(--orange-2); letter-spacing: .08em; }
+  .step h3 { font-size: 21px; letter-spacing: -.02em; line-height: 1.15; }
+  .step p { margin: 0; color: #e6d3c6; font-size: 14.5px; }
+  .step-ex { margin-top: auto; padding-top: 12px; border-top: 1px solid var(--glass-line); font-size: 13px; color: var(--muted); }
+  .step.hot { background: linear-gradient(160deg, rgba(255,106,19,.30), rgba(90,20,0,.25)); }
+  .proof { padding: 28px; margin-bottom: 44px; }
+  .proof-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; flex-wrap: wrap; margin-bottom: 22px; }
+  .proof-head h3 { font-size: clamp(26px, 3.2vw, 36px); margin-top: 8px; }
+  .timeline-h { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; position: relative; }
+  .timeline-h::before { content: ""; position: absolute; left: 6px; right: 6px; top: 6px; height: 2px; background: linear-gradient(90deg, rgba(255,190,150,.25), var(--orange)); }
+  .timeline-h li { position: relative; padding: 24px 16px 0 0; }
+  .timeline-h li::before { content: ""; position: absolute; left: 0; top: 0; width: 14px; height: 14px; border-radius: 50%; background: var(--bg); border: 2px solid var(--orange-2); }
+  .timeline-h li.now::before { background: var(--orange); box-shadow: 0 0 0 5px rgba(255,106,19,.25); }
+  .timeline-h b { display: block; font: 600 16px "Inter Tight", sans-serif; color: var(--text); }
+  .timeline-h span { display: block; margin-top: 4px; font-size: 13.5px; color: var(--muted); }
+  .agents-head { margin-bottom: 20px; }
+  .agents-head h3 { font-size: clamp(24px, 2.8vw, 32px); }
+  .agents-head p { margin: 10px 0 0; color: var(--muted); max-width: 640px; }
+  .squads { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+  .squad { padding: 22px; }
+  .squad h4 { margin: 0 0 8px; font: 600 13px Inter, sans-serif; letter-spacing: .1em; text-transform: uppercase; color: var(--orange-2); }
+  .squad p { margin: 0; font-size: 14.5px; color: #e6d3c6; }
+  @media (max-width: 1000px) { .method, .squads { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 720px) { .method, .squads, .timeline-h { grid-template-columns: 1fr; } .timeline-h::before { display: none; } .timeline-h li { padding: 0 0 16px 26px; } }
+
   /* ===== RESPONSIVO ===== */
   @media (max-width: 1000px) {
     .hero-grid { grid-template-columns: 1fr; min-height: 0; }
@@ -406,25 +435,61 @@
   <div class="wrap">
     <div class="eyebrow">Como trabalho com IA</div>
     <h2>A IA acelera. As decisões são minhas.</h2>
-    <p class="lead">Uso o Claude Code como par de desenvolvimento contínuo e mantenho uma biblioteca de 40+ agentes e skills especializados, de análise de audiência e SEO a design e revisão.</p>
-    <div class="split">
-      <div class="glass panel hot">
-        <h3>O que eu decido</h3>
-        <ul>
-          <li><b>O problema certo</b> e o que entra no escopo</li>
-          <li><b>Prioridades</b> e o que vai para produção</li>
-          <li><b>Aprovação de todo deploy</b></li>
-          <li>Como medir se <b>funcionou</b></li>
-        </ul>
+    <p class="lead">Uso o Claude Code como par de desenvolvimento contínuo. A IA escreve, testa e investiga, e eu decido o problema, o escopo e o que vai para o ar. Na prática, é assim:</p>
+
+    <ol class="method">
+      <li class="glass step">
+        <span class="step-n">01</span>
+        <h3>Começo pelo dado</h3>
+        <p>Antes de qualquer código, um número que justifique o esforço.</p>
+        <span class="step-ex">Ex.: só ~0,07% de quem via os posts do Instagram clicava para ler a matéria.</span>
+      </li>
+      <li class="glass step">
+        <span class="step-n">02</span>
+        <h3>Desenho antes de codar</h3>
+        <p>Arquitetura, custos e riscos num blueprint, comparando construir versus contratar.</p>
+        <span class="step-ex">Ex.: ferramenta própria em vez de assinar um SaaS pago por mês, com custo de infra quase zero.</span>
+      </li>
+      <li class="glass step">
+        <span class="step-n">03</span>
+        <h3>Construo com IA, reviso tudo</h3>
+        <p>O Claude Code implementa, e cada mudança passa por mim. Nenhum deploy vai ao ar sem minha aprovação.</p>
+        <span class="step-ex">Ex.: revisão de segurança antes de liberar a ferramenta para a equipe.</span>
+      </li>
+      <li class="glass step hot">
+        <span class="step-n">04</span>
+        <h3>Meço e monitoro</h3>
+        <p>UTM em cada link, alertas de falha e métrica de impacto desde o primeiro dia.</p>
+        <span class="step-ex">Ex.: quando uma resposta automática falha, o alerta aparece na própria ferramenta e chega por e-mail.</span>
+      </li>
+    </ol>
+
+    <div class="glass proof">
+      <div class="proof-head">
+        <div>
+          <div class="ctx">Prova real · Automação do Instagram</div>
+          <h3>Da ideia ao ar em 4 dias.</h3>
+        </div>
+        <span class="result">hoje: ~630 DMs por dia</span>
       </div>
-      <div class="glass panel">
-        <h3>O que a IA executa, sob revisão</h3>
-        <ul>
-          <li>Implementação de código e interfaces</li>
-          <li>Investigação de bugs até a causa raiz</li>
-          <li>Auditorias de segurança e testes</li>
-          <li>Várias sessões coordenadas no mesmo projeto</li>
-        </ul>
+      <ol class="timeline-h">
+        <li><b>18/set</b><span>Blueprint da arquitetura e validação da API da Meta</span></li>
+        <li><b>19–21/set</b><span>Integração e testes com a API da Meta</span></li>
+        <li><b>22/set</b><span>No ar, com formulário para a equipe e alertas de falha</span></li>
+        <li class="now"><b>Hoje</b><span>Mais de 26 mil DMs enviadas, e ~3 em cada 10 pessoas que recebem a DM abrem a matéria</span></li>
+      </ol>
+    </div>
+
+    <div class="agents">
+      <div class="agents-head">
+        <h3>Meu time de agentes</h3>
+        <p>Uma biblioteca de 40+ agentes e skills especializados no Claude Code, organizados por frente de trabalho.</p>
+      </div>
+      <div class="squads">
+        <div class="glass squad"><h4>Audiência e redação</h4><p>Analista de audiência · Estrategista editorial · SEO para Google Discover · Gerador de títulos SEO</p></div>
+        <div class="glass squad"><h4>Dados e visualização</h4><p>Conector de dados · Engenheiro de visualização · Diretor de apresentações executivas</p></div>
+        <div class="glass squad"><h4>Propostas comerciais</h4><p>Orquestrador que coordena estrategista, copywriter, diretor de arte, guardião de marca e revisor de QA</p></div>
+        <div class="glass squad"><h4>Produto web</h4><p>Arquiteto fullstack · Designer de interface · SEO técnico · Especialista em produto imobiliário</p></div>
       </div>
     </div>
   </div>
